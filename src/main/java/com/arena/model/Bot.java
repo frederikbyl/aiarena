@@ -58,7 +58,7 @@ public class Bot {
 		
 		//if distance beast1 <-> bot < 10
 		if(Location.calculateDistance(beast, this) < Fysics.CRITICAL_DISTANCE ) {
-			System.out.println("BEAST PROXIMITY DAMAGE");
+			//System.out.println("BEAST PROXIMITY DAMAGE");
 			this.health -= Fysics.BEAST_CLOSE_ENERGY_COST;
 		}
 		
@@ -72,7 +72,7 @@ public class Bot {
 				
 		}
 		if(count > 1) {
-			this.health -= Fysics.BEAST_CLOSE_ENERGY_COST;
+			this.health -= Fysics.FRIEND_CLOSE_ENERGY_COST;
 		}
 		
 	

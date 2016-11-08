@@ -3,12 +3,13 @@ package com.arena.model;
 import java.util.ArrayList;
 
 public class BotPopulation {
+
+	private Brain brain; 
 	
 	private ArrayList<Bot> population = new ArrayList<Bot>();
 
-	public BotPopulation(int populationSize) {
-		Brain brain = new Brain();
-		brain.initialise();
+	public BotPopulation(int populationSize, Brain brain) {
+		
 		for(int i=0; i<populationSize; i++) {
 			Bot bot = new Bot(brain);
 			
@@ -41,6 +42,14 @@ public class BotPopulation {
 
 	public  ArrayList<Bot> getList() {
 		return population;
+	}
+
+	public Brain getBrain() {
+		return brain;
+	}
+
+	public void setBrain(Brain brain) {
+		this.brain = brain;
 	}
 
 }

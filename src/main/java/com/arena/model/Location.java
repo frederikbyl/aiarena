@@ -27,16 +27,20 @@ public class Location {
 		Random rand = new Random();
 		if (rand.nextBoolean()) {
 			if (rand.nextBoolean()) {
-				x++;
+				moveUp();
+				moveUp();
 			} else {
-				x--;
+				moveDown();
+				moveDown();
 			}
 		}
 		if(rand.nextBoolean()) {
 			if (rand.nextBoolean()) {
-				y++;
+				moveLeft();
+				moveLeft();
 			} else {
-				y--;
+				moveRight();
+				moveRight();
 			}
 		}
 		
@@ -53,8 +57,8 @@ public class Location {
 	}
 	
 	public void moveUp() {
-		if(y==0) {
-			y=Arena.MAX_Y;
+		if(y==1) {
+			y=Arena.MAX_Y-1;
 		} else {
 			y--;
 		}
@@ -62,24 +66,24 @@ public class Location {
 	}
 	
 	public void moveDown() {
-		if(y==Arena.MAX_Y) {
-			y=0;
+		if(y==Arena.MAX_Y-1) {
+			y=1;
 		} else {
 			y++;
 		}
 	}
 	
 	public void moveLeft() {
-		if(x==0){
-			x=Arena.MAX_X;
+		if(x==1){
+			x=Arena.MAX_X-1;
 		} else  {
 			x--;	
 		}
 	}
 	
 	public void moveRight() {
-		if(x==Arena.MAX_X){
-			x=0;
+		if(x==Arena.MAX_X-1){
+			x=1;
 		} else  {
 			x++;	
 		}
