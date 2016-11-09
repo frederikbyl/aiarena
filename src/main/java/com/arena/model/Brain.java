@@ -16,134 +16,114 @@ public class Brain {
 	private double [] weights_neuron8 = new double [3];
 	private double [] weights_neuron9 = new double [3];
 	private double [] weights_neuron10 = new double [3];
-//	public void initialise() {
-//		
-//		3.816721226289706 -3.3975477890661487 5.17302143995568 3.0214469841183584 -1.5896100544337843 5.4509516827403255 0.3501365597902624
-//		-5.248242545847957 2.421396540323101 -1.020136984092601 -1.1563900275546914 -5.923215117876802 -9.936357862646329 2.8316498437312836
-//		-3.4582103487849136 3.269238510782226 2.947274258215401 -2.3230560185986384 -1.6870518485062027 -10.21843341280902 0.5498713833904171
-//		-2.374461380159218 5.699221025681567 5.498144303308753
-//		2.3907682066339464 4.402103484698201 2.9978917228484843
-//		4.256111718839019 -3.8320562932981934 -3.048875004473918
-//		-1.3722774304864012 3.0189002641975264 -1.794043678963826
-//		-0.8128633032687715 -0.00789746768263144 -5.136957375092277
-//		-4.497521311336287 -3.292133919606306 1.3148387821068488
-//		-2.93457792217632 7.65004038806749 3.4394866493396643
-//		
-//		weights_neuron1 [0] = ;
-//		weights_neuron1 [1] = ;
-//		weights_neuron1 [2] = ;
-//		weights_neuron1 [3] = ;
-//		weights_neuron1 [4] = ;
-//		weights_neuron1 [5] = ;
-//		weights_neuron1 [6] = ;
-//		
-//		weights_neuron2 [0] = ;
-//		weights_neuron2 [1] = ;
-//		weights_neuron2 [2] = ;
-//		weights_neuron2 [3] = ;
-//		weights_neuron2 [4] = ;
-//		weights_neuron2 [5] = ;
-//		weights_neuron2 [6] = ;
-//		
-//		weights_neuron3 [0] = ;
-//		weights_neuron3 [1] = ;
-//		weights_neuron3 [2] = ;
-//		weights_neuron3 [3] = ;
-//		weights_neuron3 [4] = ;
-//		weights_neuron3 [5] = ;
-//		weights_neuron3 [6] = ;
-//	 
-//		
-//		weights_neuron4 [0] = -2.935542870368534;
-//		weights_neuron4 [1] =  6.424353049778225;
-//		weights_neuron4 [2] = 4.7551964305532115;
-//		
-//		weights_neuron5 [0] = 2.5186791687482764;
-//		weights_neuron5 [1] = 3.9035770324699928;
-//		weights_neuron5 [2] =  2.593799478139862;
-//		
-//		weights_neuron6 [0] = 4.132435670224667;
-//		weights_neuron6 [1] = -2.505330961185882;
-//		weights_neuron6 [2] = -3.2499761054597327;
-//		
-//		weights_neuron7 [0] = -2.374473915175377;
-//		weights_neuron7 [1] = 2.741081654935961;
-//		weights_neuron7 [2] =  -2.26678757151223;
-//		
-//		weights_neuron8 [0] = -0.28038195962441237;
-//		weights_neuron8 [1] = 0.04742259586303099;
-//		weights_neuron8 [2] =  -5.296668716400466;
-//		
-//		weights_neuron9 [0] = -4.494591457124672 ;
-//		weights_neuron9 [1] = -2.8203326550641323;
-//		weights_neuron9 [2] = 2.00702598733845;
-//		
-//		weights_neuron10 [0] = -3.8590800018577096;
-//		weights_neuron10 [1] = 8.37243583165641;
-//		weights_neuron10 [2] = 3.709181315882686 ;
-//		
-//	}
-//	
 	
 	public void initialise() {
 		
-		
-		Random rand = new Random();
-		weights_neuron1 [0] = 0.0;
-		weights_neuron1 [1] = 0.0;
-		weights_neuron1 [2] = 0.0;
-		weights_neuron1 [3] = 0.0;
-		weights_neuron1 [4] = 0.0;
-		weights_neuron1 [5] = 0.0;
-		weights_neuron1 [6] = 0.0;
-		
-		weights_neuron2 [0] = 0.0;
-		weights_neuron2 [1] = 0.0;
-		weights_neuron2 [2] = 0.0;
-		weights_neuron2 [3] = 0.0;
-		weights_neuron2 [4] = 0.0;
-		weights_neuron2 [5] = 0.0;
-		weights_neuron2 [6] = 0.0;
-		
-		
-		
-		weights_neuron3 [0] = 0.0;
-		weights_neuron3 [1] = 0.0;
-		weights_neuron3 [2] = 0.0;
-		weights_neuron3 [3] = 0.0;
-		weights_neuron3 [4] = 0.0;
-		weights_neuron3 [5] = 0.0;
-		weights_neuron3 [6] = 0.0;
-		
-		weights_neuron4 [0] = 0.0;
-		weights_neuron4 [1] = 0.0;
-		weights_neuron4 [2] = 0.0;
-		
-		weights_neuron5 [0] = 0.0;
-		weights_neuron5 [1] = 0.0;
-		weights_neuron5 [2] = 0.0;
-		
-		weights_neuron6 [0] = 0.0;
-		weights_neuron6 [1] = 0.0;
-		weights_neuron6 [2] = 0.0;
-		
-		weights_neuron7 [0] = 0.0;
-		weights_neuron7 [1] = 0.0;
-		weights_neuron7 [2] = 0.0;
-		
-		weights_neuron8 [0] = 0.0;
-		weights_neuron8 [1] = 0.0;
-		weights_neuron8 [2] = 0.0;
-		
-		weights_neuron9 [0] = 0.0;
-		weights_neuron9 [1] = 0.0;
-		weights_neuron9 [2] = 0.0;
-		
-		weights_neuron10 [0] = 0.0;
-		weights_neuron10 [1] = 0.0;
-		weights_neuron10 [2] = 0.0;
-		
+
+		weights_neuron1 [0] = -0.4398354770879665;
+		weights_neuron1 [1] = 0.7031462237394361;
+		weights_neuron1 [2] = 0.8550627695640253;
+		weights_neuron1 [3] = 0.5782404812004156;
+		weights_neuron1 [4] = 1.310329688801346;
+		weights_neuron1 [5] = -11.68521058115469;
+		weights_neuron1 [6] = -3.2775914906725716;
+		weights_neuron2 [0] = -3.2824503434185854;
+		weights_neuron2 [1] = 5.195618505565062;
+		weights_neuron2 [2] = 4.518142906379575;
+		weights_neuron2 [3] = -5.007986489046809;
+		weights_neuron2 [4] = 2.7781552636538724;
+		weights_neuron2 [5] = 8.127202993384286;
+		weights_neuron2 [6] = -36.663518563139014;
+		weights_neuron3 [0] = -0.1716973228203986;
+		weights_neuron3 [1] = 0.5978575783981261;
+		weights_neuron3 [2] = -23.263649929725965;
+		weights_neuron3 [3] = -0.7532638543493696;
+		weights_neuron3 [4] = 8.959090875488162;
+		weights_neuron3 [5] = 3.0284959789340946;
+		weights_neuron3 [6] = -12.16593354445263;
+		weights_neuron4 [0] = 2.5275571752902986;
+		weights_neuron4 [1] = 18.14125827250929;
+		weights_neuron4 [2] = 6.482887984131867;
+		weights_neuron5 [0] = -4.890663267984401;
+		weights_neuron5 [1] = -0.35984138043714203;
+		weights_neuron5 [2] = 2.5630734707250458;
+		weights_neuron6 [0] = 2.7809306602045276;
+		weights_neuron6 [1] = 2.9743957580347384;
+		weights_neuron6 [2] = -5.606585203558673;
+		weights_neuron7 [0] = -4.873046109471385;
+		weights_neuron7 [1] = -15.887967439280683;
+		weights_neuron7 [2] = 12.415603824971072;
+		weights_neuron8 [0] = 0.48427017612127987;
+		weights_neuron8 [1] = -1.5839871415241487;
+		weights_neuron8 [2] = 0.28224544614272923;
+		weights_neuron9 [0] = -0.8987638323361329;
+		weights_neuron9 [1] = -46.68090210551524;
+		weights_neuron9 [2] = -3.181686355078933;
+		weights_neuron10 [0] = 1.1564437461715045;
+		weights_neuron10 [1] = -1.3848904892787912;
+		weights_neuron10 [2] = 5.313291725691983;
+
 	}
+	
+	
+//	 public void initialise() {
+//	
+//	
+//	 weights_neuron1 [0] = 0.0;
+//	 weights_neuron1 [1] = 0.0;
+//	 weights_neuron1 [2] = 0.0;
+//	 weights_neuron1 [3] = 0.0;
+//	 weights_neuron1 [4] = 0.0;
+//	 weights_neuron1 [5] = 0.0;
+//	 weights_neuron1 [6] = 0.0;
+//	
+//	 weights_neuron2 [0] = 0.0;
+//	 weights_neuron2 [1] = 0.0;
+//	 weights_neuron2 [2] = 0.0;
+//	 weights_neuron2 [3] = 0.0;
+//	 weights_neuron2 [4] = 0.0;
+//	 weights_neuron2 [5] = 0.0;
+//	 weights_neuron2 [6] = 0.0;
+//	
+//	
+//	
+//	 weights_neuron3 [0] = 0.0;
+//	 weights_neuron3 [1] = 0.0;
+//	 weights_neuron3 [2] = 0.0;
+//	 weights_neuron3 [3] = 0.0;
+//	 weights_neuron3 [4] = 0.0;
+//	 weights_neuron3 [5] = 0.0;
+//	 weights_neuron3 [6] = 0.0;
+//	
+//	 weights_neuron4 [0] = 0.0;
+//	 weights_neuron4 [1] = 0.0;
+//	 weights_neuron4 [2] = 0.0;
+//	
+//	 weights_neuron5 [0] = 0.0;
+//	 weights_neuron5 [1] = 0.0;
+//	 weights_neuron5 [2] = 0.0;
+//	
+//	 weights_neuron6 [0] = 0.0;
+//	 weights_neuron6 [1] = 0.0;
+//	 weights_neuron6 [2] = 0.0;
+//	
+//	 weights_neuron7 [0] = 0.0;
+//	 weights_neuron7 [1] = 0.0;
+//	 weights_neuron7 [2] = 0.0;
+//	
+//	 weights_neuron8 [0] = 0.0;
+//	 weights_neuron8 [1] = 0.0;
+//	 weights_neuron8 [2] = 0.0;
+//	
+//	 weights_neuron9 [0] = 0.0;
+//	 weights_neuron9 [1] = 0.0;
+//	 weights_neuron9 [2] = 0.0;
+//	
+//	 weights_neuron10 [0] = 0.0;
+//	 weights_neuron10 [1] = 0.0;
+//	 weights_neuron10 [2] = 0.0;
+//	
+//	 }
 //	
 //	public void initialise() {
 //		Random rand = new Random();
@@ -205,59 +185,60 @@ public class Brain {
 	
 	public void mutate() {
 		Random rand = new Random();
-		weights_neuron1 [0] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron1 [1] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron1 [2] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron1 [3]+= (rand.nextDouble() -0.5)/10.0;
-		weights_neuron1 [4] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron1 [5] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron1 [6] += (rand.nextDouble() -0.5)/10.0;
+		System.out.println("EXAMPLE RANDOM : "+ (rand.nextDouble() -0.5)/(rand.nextDouble()*1000));
+		weights_neuron1 [0] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron1 [1] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron1 [2] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron1 [3]+= (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron1 [4] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron1 [5] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron1 [6] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
 		
-		weights_neuron2 [0] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron2 [1] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron2 [2] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron2 [3] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron2 [4] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron2 [5]+= (rand.nextDouble() -0.5)/10.0;
-		weights_neuron2 [6] += (rand.nextDouble() -0.5)/10.0;
+		weights_neuron2 [0] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron2 [1] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron2 [2] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron2 [3] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron2 [4] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron2 [5]+= (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron2 [6] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
 		
 		
 		
-		weights_neuron3 [0] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron3 [1]+= (rand.nextDouble() -0.5)/10.0;
-		weights_neuron3 [2] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron3 [3] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron3 [4] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron3 [5] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron3 [6] += (rand.nextDouble() -0.5)/10.0;
+		weights_neuron3 [0] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron3 [1]+= (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron3 [2] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron3 [3] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron3 [4] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron3 [5] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron3 [6] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
 		
-		weights_neuron4 [0] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron4 [1] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron4 [2] += (rand.nextDouble() -0.5)/10.0;
+		weights_neuron4 [0] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron4 [1] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron4 [2] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
 		
-		weights_neuron5 [0] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron5 [1] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron5 [2] += (rand.nextDouble() -0.5)/10.0;
+		weights_neuron5 [0] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron5 [1] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron5 [2] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
 		
-		weights_neuron6 [0] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron6 [1] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron6 [2] += (rand.nextDouble() -0.5)/10.0;
+		weights_neuron6 [0] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron6 [1] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron6 [2] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
 		
-		weights_neuron7 [0] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron7 [1] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron7 [2] += (rand.nextDouble() -0.5)/10.0;
+		weights_neuron7 [0] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron7 [1] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron7 [2] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
 		
-		weights_neuron8 [0] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron8 [1] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron8 [2] += (rand.nextDouble() -0.5)/10.0;
+		weights_neuron8 [0] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron8 [1] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron8 [2] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
 		
-		weights_neuron9 [0] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron9 [1] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron9 [2] += (rand.nextDouble() -0.5)/10.0;
+		weights_neuron9 [0] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron9 [1] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron9 [2] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
 		
-		weights_neuron10 [0] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron10 [1] += (rand.nextDouble() -0.5)/10.0;
-		weights_neuron10 [2] += (rand.nextDouble() -0.5)/10.0;
+		weights_neuron10 [0] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron10 [1] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
+		weights_neuron10 [2] += (rand.nextDouble() -0.5)/(rand.nextDouble()*1000);
 		
 	}
 

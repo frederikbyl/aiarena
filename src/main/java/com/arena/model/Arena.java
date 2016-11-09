@@ -97,6 +97,8 @@ public class Arena {
 					brain2.mutate();
 				} else {
 					System.out.println("MUTATE BOTH");
+					
+					
 					brain1.mutate();
 					brain2.mutate();
 				}
