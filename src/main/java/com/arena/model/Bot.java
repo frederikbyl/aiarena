@@ -2,18 +2,28 @@ package com.arena.model;
 
 public class Bot {
 	
+	public boolean turned = false;
+	public boolean shot = false;
+	public boolean hit = false;
+	public boolean moved = false;
+	public boolean shooting = false;
+	public boolean fullhit = false;
+	
+	
 	public Bot(Brain brain) {
 		super();
 		this.brain = brain;
 	}
-
-
 
 	private Location location;
 	private Facing facing = new Facing(); //left right up down
 	private double health;
 	private Brain brain = new Brain();
 
+	public void initialize() {
+
+		this.shooting = false;
+	}
 	
 	public Facing getFacing() {
 		return facing;
@@ -81,42 +91,46 @@ public class Bot {
 		
 		if(action.equals(Action.SHOOT)) {
 			this.health -= Fysics.SHOOT_ENERGY_COST;
-			
-			beast.shotAt(location, facing);
+			shot = true;
+			shooting = true;
+			hit = beast.shotAt(location, facing);
+			if(hit) {
+				fullhit = true;
+				this.health = 1.0;
+			}
+				
+		
 		}
 		if(action.equals(Action.MOVE_DOWN)) {
 			location.moveDown();
-			
+			moved= true;
 			this.health -= Fysics.MOVE_ENERGY_COST;
 		}
 		if(action.equals(Action.MOVE_LEFT)) {
 			location.moveLeft();
-			
+			moved= true;
 			this.health -= Fysics.MOVE_ENERGY_COST;
 		}
 		if(action.equals(Action.MOVE_RIGHT)) {
 			location.moveRight();
-			
+			moved= true;
 			this.health -= Fysics.MOVE_ENERGY_COST;
 		}
 		if(action.equals(Action.MOVE_UP)) {
 			location.moveUp();
-			
+			moved= true;
 			this.health -= Fysics.MOVE_ENERGY_COST;
 		}
 		if (action.equals(Action.TURN_LEFT)) {
 			facing.turnLeft();
-			
+			turned = true;
 			this.health -= Fysics.TURN_ENERGY_COST;
 		}
 		if (action.equals(Action.TURN_RIGHT)) {
 			facing.turnRight();
-			
+			turned = true;
 			this.health -= Fysics.TURN_ENERGY_COST;
 		}
-	
-		
-		
 		
 	}
 }

@@ -10,10 +10,12 @@ public class BotPopulation {
 
 	public BotPopulation(int populationSize, Brain brain) {
 		
+		this.brain = brain;
 		for(int i=0; i<populationSize; i++) {
 			Bot bot = new Bot(brain);
 			
 			bot.setLocation(Arena.getRandomLocation());
+		
 			bot.setHealth(1.0);
 			population.add(bot);	
 		}
@@ -27,6 +29,7 @@ public class BotPopulation {
 		ArrayList<Bot> deadBots = new ArrayList<Bot>();
 		
 		for (Bot bot : population) {
+			bot.initialize();
 			bot.react(beast1, this);
 			if(bot.getHealth()<=0.0) {
 				deadBots.add(bot);

@@ -55,10 +55,16 @@ public class Location {
 		Location bot2Location = bot2.getLocation();
 		return Math.pow( Math.pow( (bot1Location.getX() - bot2Location.getX()), 2.0)  + Math.pow( (bot1Location.getY() - bot2Location.getY()), 2.0) , 1.0/2.0);
 	}
+	public static double calculateDistance(Beast beast, Location location) {
+		Location beastLocation = beast.getLocation();
+		
+		return Math.pow( Math.pow( (beastLocation.getX() - location.getX()), 2.0)  + Math.pow( (beastLocation.getY() - location.getY()), 2.0) , 1.0/2.0);
+	}
+	
 	
 	public void moveUp() {
-		if(y==1) {
-			y=Arena.MAX_Y-1;
+		if(y==0) {
+			y=Arena.MAX_Y;
 		} else {
 			y--;
 		}
@@ -66,24 +72,24 @@ public class Location {
 	}
 	
 	public void moveDown() {
-		if(y==Arena.MAX_Y-1) {
-			y=1;
+		if(y==Arena.MAX_Y) {
+			y=0;
 		} else {
 			y++;
 		}
 	}
 	
 	public void moveLeft() {
-		if(x==1){
-			x=Arena.MAX_X-1;
+		if(x==0){
+			x=Arena.MAX_X;
 		} else  {
 			x--;	
 		}
 	}
 	
 	public void moveRight() {
-		if(x==Arena.MAX_X-1){
-			x=1;
+		if(x==Arena.MAX_X){
+			x=0;
 		} else  {
 			x++;	
 		}

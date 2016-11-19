@@ -1,7 +1,5 @@
 package com.arena.model;
 
-import java.util.Random;
-
 public class Beast {
 
 	private Location location;
@@ -11,41 +9,41 @@ public class Beast {
 		super();
 		this.health = health;
 		this.location = Arena.getRandomLocation();
+		
 	}
 
 	public void move() {
-
+		//this.location = Arena.getRandomLocation();
 		location.moveRandom();
-//		location.moveRandom();
-//		location.moveRandom();
-//		location.moveRandom();
-//		location.moveRandom();
-//		location.moveRandom();
-//		location.moveRandom();
-//		Random rand = new Random();
-//		if (rand.nextBoolean()) {
-//
-////			location.moveDown();
-////			location.moveLeft();
-////			location.moveDown();
-////			location.moveLeft();
-//			location.moveDown();
-//			location.moveLeft();
-//			location.moveDown();
-//			location.moveLeft();
-//
-//		} else {
-//
-////			location.moveDown();
-////			location.moveRight();
-////			location.moveDown();
-////			location.moveRight();
-//			location.moveDown();
-//			location.moveRight();
-//			location.moveDown();
-//			location.moveRight();
-//
-//		}
+		location.moveRandom();
+		location.moveRandom();
+		location.moveRandom();
+		location.moveRandom();
+		location.moveRandom();
+		location.moveRandom();
+		location.moveRandom();
+		location.moveRandom();
+		location.moveRandom();
+		location.moveRandom();
+//		location.moveLeft();
+//		location.moveLeft();
+//		location.moveLeft();
+//		location.moveLeft();
+//		location.moveDown();
+//		location.moveDown();
+//		location.moveDown();
+//		location.moveDown();
+//		location.moveDown();
+//		location.moveRight();
+//		location.moveRight();
+//		location.moveRight();
+//		location.moveRight();
+//		location.moveDown();
+//		location.moveDown();
+//		location.moveDown();
+//		location.moveDown();
+//		location.moveDown();
+		
 	}
 
 	public Location initialiseLocation() {
@@ -68,28 +66,43 @@ public class Beast {
 		this.health = health;
 	}
 
-	public void shotAt(Location location, Facing facing) {
+	public boolean shotAt(Location location, Facing facing) {
 
 		int beastX = this.getLocation().getX();
 		int beastY = this.getLocation().getY();
 
 		int damageLocationX = location.getX();
 		int damageLocationY = location.getY();
-		boolean hit = false;
-		boolean outArena = false;
-		while (!hit && !outArena) {
-			if (damageLocationX == beastX && damageLocationY == beastY) {
-				hit = true;
-				this.health -= Fysics.DAMAGE;
-				System.out.println("BEAST GOT HIT!!!!!");
+		boolean xOk = false;
+		boolean yOk = false;
+		
+		int resultX = beastX - damageLocationX;
+		int resultY = beastY - damageLocationY;
+		
+		if(resultX == 0) {
+			if(facing.direction.getX() == 0) {
+				xOk = true;
 			}
-			if (damageLocationX < 0 || damageLocationX > Arena.MAX_X || damageLocationY < 0
-					|| damageLocationY > Arena.MAX_Y) {
-				outArena = true;
+		} else{
+			if(resultX*facing.direction.getX()>0) {
+				xOk = true;
 			}
-			damageLocationX += facing.direction.getX();
-			damageLocationY += facing.direction.getY();
 		}
+		if(resultY == 0) {
+			if(facing.direction.getY() == 0) {
+				yOk = true;
+			}
+		}else {
+			if(resultY*facing.direction.getY()>0) {
+				yOk = true;
+			}
+		}
+		if(xOk && yOk) {
+			this.health -= Fysics.DAMAGE;
+			//System.out.println("beast got hit");
+			return true;
+		}
+		return false;
 
 	}
 
