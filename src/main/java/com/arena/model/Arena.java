@@ -17,11 +17,11 @@ import org.bytedeco.javacv.OpenCVFrameConverter;
 
 public class Arena {
 
-	public static int MAX_X = 200;
-	public static int MAX_Y = 200;
+	public static int MAX_X = 400;
+	public static int MAX_Y = 400;
 
-	public static int POPULATION_SIZE = 100;
-	public static int POPULATIONS = 20;
+	public static int POPULATION_SIZE = 3000;
+	public static int POPULATIONS = 500;
 
 	public static double MAX_HEALTH = 1.0;
 
@@ -32,15 +32,166 @@ public class Arena {
 	}
 
 	public void play() throws InterruptedException {
+	
+		//playPopulations();
+		playIndividuals();
+	}
+
+
+	private void playIndividuals() throws InterruptedException {
+		IplImage frame = cvCreateImage(cvSize(MAX_Y + 30, MAX_X + 30), 8, 3);
+		cvNamedWindow("ARENA", CV_WINDOW_AUTOSIZE);
+		
+		Beast beast = new Beast(MAX_HEALTH);
+		
+		Brain bestbrain = new Brain();
+		bestbrain.initialise();
+		Brain secondbestbrain = new Brain();
+		secondbestbrain.initialise();
+		
+		ArrayList<Bot> population = new ArrayList<Bot>();
+		
+		for(int i=0; i<POPULATION_SIZE; i++) {
+			Brain brain = new Brain();
+			brain.initialise();
+			Bot bot = new Bot(brain);
+			
+			bot.setLocation(Arena.getRandomLocation());
+		
+			bot.setHealth(1.0);
+			population.add(bot);	
+		}
+		
+		int deadBotsCount = 0;
+		int iteration = 0;
+		while(true) {
+			iteration++;
+			beast.move();
+			
+			deadBotsCount = 0;
+			ArrayList<Bot> deadBots = new ArrayList<Bot>();
+			
+			for(Bot bot : population) {
+				bot.react(beast);
+				if(bot.getHealth()<=0.0) {
+					deadBotsCount++;
+					deadBots.add(bot);
+				}
+			}
+			
+			for(Bot bot : deadBots) {
+				population.remove(bot);
+			}
+			
+			//create new bots
+			if(deadBotsCount>0.0) {
+
+				System.out.println("DEAD: "+ deadBotsCount);
+				Brain best  = getBrainBestBot(population);
+				Brain secondBest = getBrainSecondBestBot(population);
+				best.print();
+				for(int i=deadBotsCount; i>0 ; i--) {
+					Bot newBot;
+					if(i%10==0) {
+						
+						Brain brain1 = new Brain();
+						brain1.initialise();
+						Brain brain2 = new Brain();
+						brain2.initialise();
+					
+						newBot = new Bot(Brain.procreate1(brain1, brain2));
+					} else if(i%9==0){
+						newBot = new Bot(Brain.procreate1(best, secondBest));
+					}else if(i%4==0){
+						newBot = new Bot(Brain.procreate5(best, secondBest));
+					}else if(i%3==0){
+							newBot = new Bot(Brain.procreate5(secondBest, best));
+					}else {
+						newBot = new Bot(Brain.procreate5(best, secondBest));	
+						
+					}
+					
+					
+					newBot.setLocation(Arena.getRandomLocation());
+					population.add(newBot);
+				}
+				
+			}
+			//if(iteration>5000) {
+				draw(frame, beast, population);
+				//Thread.sleep(100);
+			//}
+					
+			
+			
+		}
+		
+		
+	}
+
+	private Brain getBrainSecondBestBot(ArrayList<Bot> population) {
+		Brain secondBestBrain = new Brain();
+		secondBestBrain.initialise();
+		Brain bestBrain = new Brain();
+		double secondbest = 0.0;
+		
+		double bestPerformance = -Integer.MAX_VALUE;
+		for(Bot bot : population) {
+			if (bot.getPerformance() > bestPerformance) {
+				
+				
+				if(bestBrain.differentFrom(bot.getBrain())) {
+					secondBestBrain = bestBrain;
+					secondbest = bestPerformance;
+					bestBrain=bot.getBrain();	
+				}
+				bestPerformance = bot.getPerformance();
+			}
+		}
+		System.out.println("SECONDBEST: "+secondbest);
+		if(secondbest<0.0) {
+			secondBestBrain = new Brain();
+			secondBestBrain.initialise();
+		}
+		return secondBestBrain.clone();
+	}
+
+	private Brain getBrainBestBot(ArrayList<Bot> population) {
+		Brain bestBrain = new Brain();
+		bestBrain.initialise();
+		double performance = -Integer.MAX_VALUE;
+		int i = 0;
+		int found = 0;
+		for(Bot bot : population) {
+			i++;
+			if (bot.getPerformance() > performance) {
+				found = i;
+				performance = bot.getPerformance();
+				bestBrain = bot.getBrain();
+			}
+		}
+		if(performance<0.0) {
+			bestBrain = new Brain();
+			bestBrain.initialise();
+		}
+		System.out.println("BEST: "+performance + " " + found);
+		return bestBrain.clone();
+	}
+
+	private void playPopulations() throws InterruptedException {
 		IplImage frame = cvCreateImage(cvSize(MAX_Y + 30, MAX_X + 30), 8, 3);
 		cvNamedWindow("ARENA", CV_WINDOW_AUTOSIZE);
 
+		
 		
 		Brain bestbrain = new Brain();
 		bestbrain.initialise();
 		Brain secondbestbrain = new Brain();
 		secondbestbrain.initialise();
 	
+		
+		
+		
 		for (int i = 0; i < 100000; i++) {
 			//System.out.println("ITERATION :" + i);
 			// population 1 should attack beast 1
@@ -102,7 +253,7 @@ public class Arena {
 			
 		
 
-			for(int k=0; k<100;k++) {
+			for(int k=0; k<200;k++) {
 
 				for(Beast beast : beasts) {
 					beast.move();
@@ -159,15 +310,18 @@ public class Arena {
 
 	}
 
-
 	private double calculatePerformance(BotPopulation population, Beast beast) {
 		double botlives = 0.0;
 		boolean turnedhit = false;
 		boolean movedhit = false;
 		boolean turnedmovedhit =false;
 		boolean hit = false;
+		boolean moved = false;
 		boolean shotnothinghit = false;
+	
+		double distanceToBeast = 0.0;
 		for (Bot bot : population.getList()) {
+			distanceToBeast += Location.calculateDistance(beast, bot);
 			if(bot.turned  && bot.hit)
 			{
 				turnedhit = true;
@@ -176,7 +330,7 @@ public class Arena {
 			if(bot.moved  && bot.hit)
 			{
 				movedhit = true;
-					botlives += 50;	
+				botlives += 50;	
 			}
 			if(bot.turned  && bot.hit && bot.moved)
 			{
@@ -190,13 +344,25 @@ public class Arena {
 			if(bot.getHealth() >0.98) {
 				botlives +=50;
 			}
+			if(bot.moved){
+				moved = true;
+			}
 			
-			if(!bot.shot) {
+			
+			if(bot.shot&& !bot.hit) {
 				shotnothinghit = true;
-				botlives -=100;
+				botlives -=1000;
 			}
 				
 		}
+		if(distanceToBeast ==37.0) {
+			if(moved) {
+				botlives += 1200;
+				System.out.println("the right distance");
+			}
+				
+		} 
+		//System.out.println("Disntace " + distanceToBeast);
 		botlives = botlives - beast.getHealth();
 		System.out.println("RESUlt :" + turnedhit + " " +movedhit + " " + turnedmovedhit + " "+ hit +" "+ shotnothinghit);
 		return botlives;
@@ -224,7 +390,7 @@ public class Arena {
 		for(Beast beast : beasts) {
 			i++;
 			if (beast.getLocation().getX() > 1 && beast.getLocation().getY() > 1) { // && beast.getHealth() > 0.0
-				if(i<4)
+				//if(i<20)
 					draw(sI, beast, i);
 			}
 	
@@ -235,7 +401,7 @@ public class Arena {
 			i++;
 			for (Bot bot : population.getList()) {
 				if (bot.getLocation().getX() > 1 && bot.getLocation().getY() > 1) {
-					if(i<4)
+				//	if(i<20)
 						draw(sI, bot, i);
 					
 				}
@@ -247,6 +413,42 @@ public class Arena {
 		cvShowImage("ARENA", matconvertor.convertToIplImage(matconvertor.convert(frameMat)));
 
 	}
+	
+	private void draw(IplImage frame, Beast beast, ArrayList<Bot> population) {
+		
+		Mat frameMat = new Mat(frame);
+		
+		OpenCVFrameConverter.ToIplImage matconvertor = new OpenCVFrameConverter.ToIplImage();
+		UByteRawIndexer sI = frameMat.createIndexer();
+		for (int x = 0; x < frameMat.rows(); x++) {
+
+			for (int y = 0; y < frameMat.cols(); y++) {
+				sI.put(x, y, 0, 255);
+				sI.put(x, y, 1, 255);
+				sI.put(x, y, 2, 255);
+
+			}
+		}
+	
+		int i = 0;
+		
+		if (beast.getLocation().getX() > 1 && beast.getLocation().getY() > 1) { 
+			draw(sI, beast, i);
+		}
+
+	
+		i=0;
+		for(Bot bot : population) {
+			
+				draw(sI, bot, i);
+			
+
+		}
+		
+		cvShowImage("ARENA", matconvertor.convertToIplImage(matconvertor.convert(frameMat)));
+
+	}
+
 
 	private void draw(UByteRawIndexer sI, int x, int y, int i) {
 		try {
@@ -297,6 +499,7 @@ public class Arena {
 			x+=10;
 			int y = beast.getLocation().getY();
 			y+=10;
+			i =20;
 			draw(sI, x,y, i);
 			draw(sI, x+2,y+2, i);
 			draw(sI, x+1,y+2, i);

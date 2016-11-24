@@ -20,11 +20,23 @@ public class Beast {
 		location.moveRandom();
 		location.moveRandom();
 		location.moveRandom();
-		location.moveRandom();
-		location.moveRandom();
-		location.moveRandom();
-		location.moveRandom();
-		location.moveRandom();
+//		location.moveRandom();
+//		location.moveRandom();
+//		location.moveRandom();
+//		location.moveRandom();
+//		location.moveRandom();
+//		location.moveRandom();
+//		location.moveRandom();
+//		location.moveRandom();
+//		location.moveRandom();	
+//		location.moveRandom();
+//		location.moveRandom();
+//		location.moveRandom();
+//		location.moveRandom();	location.moveRandom();
+//		location.moveRandom();
+//		location.moveRandom();
+//		location.moveRandom();
+		
 //		location.moveLeft();
 //		location.moveLeft();
 //		location.moveLeft();
@@ -98,7 +110,7 @@ public class Beast {
 			}
 		}
 		if(xOk && yOk) {
-			this.health -= Fysics.DAMAGE;
+		//	this.health -= Fysics.DAMAGE;
 			//System.out.println("beast got hit");
 			return true;
 		}

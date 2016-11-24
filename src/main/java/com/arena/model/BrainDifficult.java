@@ -1291,29 +1291,29 @@ public class BrainDifficult {
 			return Action.SHOOT;
 		}
 
-		if (activation_neuron24 > activation_neuron21 && activation_neuron24 > activation_neuron22
-				&& activation_neuron24 > activation_neuron23 && activation_neuron24 > activation_neuron25
-				&& activation_neuron24 > activation_neuron26 && activation_neuron24 > activation_neuron27) {
-			return Action.MOVE_LEFT;
-		}
-
-		if (activation_neuron25 > activation_neuron21 && activation_neuron25 > activation_neuron22
-				&& activation_neuron25 > activation_neuron23 && activation_neuron25 > activation_neuron24
-				&& activation_neuron25 > activation_neuron26 && activation_neuron25 > activation_neuron27) {
-			return Action.MOVE_RIGHT;
-		}
-
-		if (activation_neuron26 >= activation_neuron21 && activation_neuron26 >= activation_neuron22
-				&& activation_neuron26 >= activation_neuron23 && activation_neuron26 >= activation_neuron24
-				&& activation_neuron26 >= activation_neuron25 && activation_neuron26 >= activation_neuron27) {
-			return Action.MOVE_UP;
-		}
-
-		if (activation_neuron27 > activation_neuron21 && activation_neuron27 > activation_neuron22
-				&& activation_neuron27 > activation_neuron23 && activation_neuron27 > activation_neuron24
-				&& activation_neuron27 > activation_neuron25 && activation_neuron27 > activation_neuron26) {
-			return Action.MOVE_DOWN;
-		}
+//		if (activation_neuron24 > activation_neuron21 && activation_neuron24 > activation_neuron22
+//				&& activation_neuron24 > activation_neuron23 && activation_neuron24 > activation_neuron25
+//				&& activation_neuron24 > activation_neuron26 && activation_neuron24 > activation_neuron27) {
+//			return Action.MOVE_LEFT;
+//		}
+//
+//		if (activation_neuron25 > activation_neuron21 && activation_neuron25 > activation_neuron22
+//				&& activation_neuron25 > activation_neuron23 && activation_neuron25 > activation_neuron24
+//				&& activation_neuron25 > activation_neuron26 && activation_neuron25 > activation_neuron27) {
+//			return Action.MOVE_RIGHT;
+//		}
+//
+//		if (activation_neuron26 >= activation_neuron21 && activation_neuron26 >= activation_neuron22
+//				&& activation_neuron26 >= activation_neuron23 && activation_neuron26 >= activation_neuron24
+//				&& activation_neuron26 >= activation_neuron25 && activation_neuron26 >= activation_neuron27) {
+//			return Action.MOVE_UP;
+//		}
+//
+//		if (activation_neuron27 > activation_neuron21 && activation_neuron27 > activation_neuron22
+//				&& activation_neuron27 > activation_neuron23 && activation_neuron27 > activation_neuron24
+//				&& activation_neuron27 > activation_neuron25 && activation_neuron27 > activation_neuron26) {
+//			return Action.MOVE_DOWN;
+//		}
 
 		return Action.DO_NOTHING;
 

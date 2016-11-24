@@ -5,10 +5,7 @@ public enum Action {
 	TURN_LEFT,
 	TURN_RIGHT, 
 	SHOOT,
-	MOVE_LEFT,
-	MOVE_RIGHT,
-	MOVE_UP,
-	MOVE_DOWN, 
+	MOVE, 
 	DO_NOTHING;
 
 }

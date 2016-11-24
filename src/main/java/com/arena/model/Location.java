@@ -8,6 +8,7 @@ public class Location {
 	private int y;
 	
 	public Location(int x, int y) {
+		//System.out.println("x "+x);
 		this.x = x;
 		this.y = y;
 	}
@@ -15,6 +16,7 @@ public class Location {
 		return x;
 	}
 	public void setX(int x) {
+		System.out.println("SET X " + x);
 		this.x = x;
 	}
 	public int getY() {
@@ -95,6 +97,13 @@ public class Location {
 		}
 	}
 	
+	
+	public void move(Direction direction) {
+		int movedX = direction.getX() +this.x;
+		int movedY = direction.getY() +this.y;
+		this.x = movedX%Arena.MAX_X;
+		this.y = movedY%Arena.MAX_Y;
+	}
 	
 	
 }

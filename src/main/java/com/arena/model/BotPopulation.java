@@ -15,6 +15,7 @@ public class BotPopulation {
 			Bot bot = new Bot(brain);
 			
 			bot.setLocation(Arena.getRandomLocation());
+			bot.setLocation(new Location(Arena.MAX_X-50,50));
 		
 			bot.setHealth(1.0);
 			population.add(bot);	
