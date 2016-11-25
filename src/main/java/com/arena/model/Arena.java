@@ -17,8 +17,8 @@ import org.bytedeco.javacv.OpenCVFrameConverter;
 
 public class Arena {
 
-	public static int MAX_X = 400;
-	public static int MAX_Y = 400;
+	public static int MAX_X = 600;
+	public static int MAX_Y = 600;
 
 	public static int POPULATION_SIZE = 2000;
 	public static int POPULATIONS = 500;
@@ -73,6 +73,9 @@ public class Arena {
 			
 			for(Bot bot : population) {
 				bot.react(beast);
+				if(iteration>120) {
+					bot.learn(beast);
+				}
 				if(bot.getHealth()<=0.0) {
 					deadBotsCount++;
 					deadBots.add(bot);
@@ -119,7 +122,7 @@ public class Arena {
 			
 			//if(iteration>5000) {
 				draw(frame, beast, population);
-				//Thread.sleep(150);
+				Thread.sleep(50);
 			//}
 					
 			

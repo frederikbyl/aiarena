@@ -23,7 +23,7 @@ public class Brain {
 	private double[] weights_neuron24 = new double[6];
 	private double[] weights_neuron25 = new double[6];
 	
-	private double alpha = 0.1;
+	private double alpha = 0.5;
 	
 	
 

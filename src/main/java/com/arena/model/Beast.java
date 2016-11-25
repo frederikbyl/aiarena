@@ -23,8 +23,8 @@ public class Beast {
 		location.moveRandom();
 		location.moveRandom();
 		location.moveRandom();
-//		location.moveRandom();
-//		location.moveRandom();
+		location.moveRandom();
+		location.moveRandom();
 //		location.moveRandom();
 //		location.moveRandom();
 //		location.moveRandom();
@@ -109,11 +109,28 @@ public class Beast {
 				yOk = true;
 			}
 		}
+		
+		
+
+		if(Math.abs(resultX) <20) {
+			if(facing.direction.getX() == 0) {
+				xOk = true;
+			}
+		}
+		
+		if(Math.abs(resultY) < 20) {
+			if(facing.direction.getY() == 0) {
+				yOk = true;
+			}
+		}
+		
 		if(xOk && yOk) {
 		//	this.health -= Fysics.DAMAGE;
 			//System.out.println("beast got hit");
 			return true;
 		}
+		
+		
 		return false;
 
 	}
