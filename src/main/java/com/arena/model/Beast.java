@@ -20,9 +20,9 @@ public class Beast {
 		location.moveRandom();
 		location.moveRandom();
 		location.moveRandom();
-//		location.moveRandom();
-//		location.moveRandom();
-//		location.moveRandom();
+		location.moveRandom();
+		location.moveRandom();
+		location.moveRandom();
 //		location.moveRandom();
 //		location.moveRandom();
 //		location.moveRandom();

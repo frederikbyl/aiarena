@@ -188,7 +188,7 @@ public class Bot {
 				performance -=50;
 			}
 			
-			if(origDistance <70.0 && origDistance < Location.calculateDistance(beast, this)) {
+			if(origDistance <70.0 && origDistance < Location.calculateDistance(beast, this) && !hasFiringPosition(beast)) {
 				performance+=50;
 				brain.learn(this, beast, Action.MOVE);
 			}
@@ -275,7 +275,7 @@ public class Bot {
 		//if not firing position 
 		if(!hasFiringPosition(beast)) {
 			//if not to close -> turn left
-			if(Location.calculateDistance(beast, this)>50.0) {
+			if(Location.calculateDistance(beast, this)>70.0) {
 				brain.learn(this, beast, Action.TURN_LEFT);
 			}
 		}
@@ -285,7 +285,7 @@ public class Bot {
 	}
 
 	private boolean bestFiringPosition(Beast beast) {
-		if(Location.calculateDistance(beast, this) >70.0 && Location.calculateDistance(beast, this) <80.0) {
+		if(Location.calculateDistance(beast, this) >70.0 ) {
 			return true;
 		}
 		return false;

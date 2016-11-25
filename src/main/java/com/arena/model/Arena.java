@@ -20,7 +20,7 @@ public class Arena {
 	public static int MAX_X = 400;
 	public static int MAX_Y = 400;
 
-	public static int POPULATION_SIZE = 3000;
+	public static int POPULATION_SIZE = 2000;
 	public static int POPULATIONS = 500;
 
 	public static double MAX_HEALTH = 1.0;
@@ -82,14 +82,13 @@ public class Arena {
 			for(Bot bot : deadBots) {
 				population.remove(bot);
 			}
-			
+			System.out.println("ITERATION: "+ iteration + " DEAD: "+ deadBotsCount);
 			//create new bots
 			if(deadBotsCount>0.0) {
-
-				System.out.println("DEAD: "+ deadBotsCount);
+				
 				Brain best  = getBrainBestBot(population);
 				Brain secondBest = getBrainSecondBestBot(population);
-				best.print();
+				//best.print();
 				for(int i=deadBotsCount; i>0 ; i--) {
 					Bot newBot;
 					if(i%10==0) {
@@ -117,9 +116,10 @@ public class Arena {
 				}
 				
 			}
+			
 			//if(iteration>5000) {
 				draw(frame, beast, population);
-				//Thread.sleep(100);
+				//Thread.sleep(150);
 			//}
 					
 			
